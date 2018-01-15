@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barcode</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="input_barcode" maxlength="30">
+        <select name="btype">
+            <option value="code128">CODE 128</option>
+            <option value="code39">CODE 39</option>
+        </select>
+        <button type="submit">Generate</button>
+    </form>
+    <br>
+    {% if image %}
+        <img class="center-block" src="data:image/png;base64,{{ image }}" style="border:1px solid #bbb;"/>
+    {% endif %}
+</body>
+</html>
